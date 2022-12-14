@@ -1,0 +1,14 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+.bg-dark{
+    background: #34394B;
+}
+.text-small{
+    font-size: 0.8rem !important;
+}
