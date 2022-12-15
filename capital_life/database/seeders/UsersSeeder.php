@@ -16,8 +16,10 @@ class UsersSeeder extends Seeder
     public function run()
     {
         //
-        User::factory(10)->create()->each(function($user){
-            $user->user_detail()->save(factory(UserDetail::class)->make());
+        return User::factory()->count(10)->create()->each(function($user){
+            $user->user_detail()->save(UserDetail::factory()->make());
+            $user->user_point()->save(UserPoint::factory()->make());
+
         });
     }
 }

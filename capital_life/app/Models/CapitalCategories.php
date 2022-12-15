@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserPoint extends Model
+class CapitalCategories extends Model
 {
     use HasFactory;
-    protected $table = 'users_points';
-    protected $primaryKey = 'up_id';
+    protected $table = 'capital_categories';
+    protected $primaryKey = 'category_id';
     protected $guarded = [];
 }

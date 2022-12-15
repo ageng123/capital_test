@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_detail', function (Blueprint $table) {
             $table->bigIncrements('user_detail_id');
             $table->timestamps();
-            $table->bigInteger('uid')->nullable();
+            $table->unsignedBigInteger('uid')->nullable();
             $table->bigInteger('no_ktp')->nullable();
             $table->bigInteger('no_hp')->nullable();
             $table->bigInteger('referral_code')->nullable();

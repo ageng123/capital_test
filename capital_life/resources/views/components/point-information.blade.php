@@ -1,5 +1,5 @@
 <section id="point-information">
-    <div class="card shadow-lg container">
+    <div class="card shadow container">
        <div class="card-body">
             <div class="card-title">
                 <h3>Informasi Point</h3>
@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <button class="btn btn-primary w-100 shadow-lg" id="can_withdraw">Withdraw</button>
+                            <button onclick="window.open('{{ route("logged_in.withdraw") }}', '_self')" class="btn btn-primary w-100 shadow-lg" id="can_withdraw">Withdraw</button>
                         </td>
                     </tr>
                 </table>

@@ -5,7 +5,13 @@
         @include('components.article-detail-components')
     </div>
     <div class="d-sm-none d-md-block col-md-4 py-4 px-4">
+        @if(!empty($user))
         @include('components.point-information')
+
+        @else
+        @include('components.form-login')
+
+        @endif
     </div>
 </div>
 @endsection
@@ -19,23 +25,33 @@
             if(timer == 0){
                 $('#timer').parent().removeClass('text-success');
                 $('#timer').parent().addClass('text-danger'); 
+                storePoint($('#timer').attr('data-article-id'));
             }
             $('#timer').html(timer);
             return;
         }
         
     }, 1000);
-    $('#point-information').ready(function(){
-        $.get('{{route('get.point_info')}}').then(resp => {
-            var { data } = resp;
-            $('#point_value').html(data.point);
-            $('#point_conversion_value').html(data.conversion);
-            $('#point_expired_value').html(data.expired);
-            if(!data.canWithdraw){
-                $("#can_withdraw").addClass('d-none')   
+    function storePoint(articlesId){
+        $.ajax({
+            method: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: {articles_id: articlesId},
+            headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+            url: `/logged_in/storePoint/`+articlesId,
+            success: function(resp){
+                console.log(resp);
+                modernAlert.success('Selamat !',resp.message);
+                setTimeout(function(){
+                    window.open(resp.returnurl, '_self');
+                },3000);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+
             }
         })
-    })
+    }
 </script>
 
 @endsection
